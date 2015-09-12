@@ -4,6 +4,7 @@ var AddToCart = require('../catalog/app-addtocart.js')
 var StoreWatchMixin = require('../../mixins/StoreWatchMixin');
 var Link = require('react-router-component').Link;
 
+//enables react to get individual item by passing in individual component
 function getCatalogItem(component){
   var thisItem;
   AppStore.getCatalog().forEach(function(item){
@@ -13,7 +14,7 @@ function getCatalogItem(component){
   });
   return {item: thisItem}
 }
-
+//linked to via app-catalog
 var CatalogDetail = React.createClass({
   mixins:[StoreWatchMixin(getCatalogItem)],
   render:function(){

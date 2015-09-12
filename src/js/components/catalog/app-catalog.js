@@ -6,10 +6,12 @@ var CatalogItem = require('../catalog/app-catalogitem');
 
 
 function getCatalog(){
+  //return initial state of catalog
   return {items: AppStore.getCatalog()}
 }
 
 var Catalog = React.createClass({
+  //use mixins to set getInitialState, componentWillMount, etc.
   mixins:[StoreWatchMixin(getCatalog)],
   render:function(){
     var items = this.state.items.map(function(item){

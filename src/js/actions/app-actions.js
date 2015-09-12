@@ -3,14 +3,17 @@ var AppDispatcher = require('../dispatchers/app-dispatcher');
 
 var AppActions = {
   addItem: function(item){
+    //pass in action object to handleViewAction
     AppDispatcher.handleViewAction({
       actionType: AppConstants.ADD_ITEM,
+      //pass in item to be added
       item: item
     })
   },
   removeItem: function(index){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.REMOVE_ITEM,
+      //grabs index to remove item
       index: index
     })
   },

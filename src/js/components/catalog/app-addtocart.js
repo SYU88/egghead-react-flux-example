@@ -1,4 +1,6 @@
 var React = require('react');
+//only need app actions components
+//flux enables you to do this
 var AppActions = require('../../actions/app-actions');
 
 var AddToCart = React.createClass({

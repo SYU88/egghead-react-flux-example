@@ -9,6 +9,7 @@ function cartTotals(){
 
 var CartSummary = React.createClass({
   mixins: [StoreWatchMixin(cartTotals)],
+  //link allows you to go back to cart view
   render:function(){
     return (
       <div>

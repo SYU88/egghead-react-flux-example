@@ -1,3 +1,4 @@
+//actions that the app is listening to
 module.exports = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',

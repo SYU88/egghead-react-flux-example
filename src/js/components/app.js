@@ -9,6 +9,9 @@ var Location  = Router.Location;
 
 var App = React.createClass({
   render:function(){
+      //template componenent from app-template.js
+      //handler is the component that we want to render at the path
+      //:item is passed as a prop to CatalogDetail
     return (
       <Template>
         <Locations>

@@ -1,12 +1,14 @@
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var AppConstants = require('../constants/app-constants');
 var assign = require('react/lib/Object.assign');
+//eventemettier from node
 var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
 
 var _catalog = [];
 
+//catalog for shopping cart
 for(var i=1; i<9; i++){
   _catalog.push({
     'id': 'Widget' + i,
@@ -17,7 +19,7 @@ for(var i=1; i<9; i++){
     'img': '/assets/product.png'
   });
 }
-
+//array of items in shopping cart
 var _cartItems = [];
 
 function _removeItem(index){
@@ -62,6 +64,7 @@ function _cartTotals(){
   return {'qty': qty, 'total': total};
 }
 
+//extends event emitter
 var AppStore = assign(EventEmitter.prototype, {
   emitChange: function(){
     this.emit(CHANGE_EVENT)
@@ -74,7 +77,7 @@ var AppStore = assign(EventEmitter.prototype, {
   removeChangeListener: function(callback){
     this.removeListener(CHANGE_EVENT, callback)
   },
-
+//access private variable
   getCart: function(){
     return _cartItems
   },
@@ -87,8 +90,10 @@ var AppStore = assign(EventEmitter.prototype, {
     return _cartTotals()
   },
 
+//useful if there are multiple stores
   dispatcherIndex: AppDispatcher.register(function(payload){
     var action = payload.action; // this is our action from handleViewAction
+    //for each action type, call a specific method
     switch(action.actionType){
       case AppConstants.ADD_ITEM:
         _addItem(payload.action.item);
@@ -108,7 +113,7 @@ var AppStore = assign(EventEmitter.prototype, {
     }
 
     AppStore.emitChange();
-
+//resolves dispatcher so that it can move on to next action
     return true;
   })
 
